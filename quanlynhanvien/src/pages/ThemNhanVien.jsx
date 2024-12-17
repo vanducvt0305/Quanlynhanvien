@@ -1,21 +1,46 @@
 import React from "react";
-
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const ThemNhanVien = () => {
+  const navigate = useNavigate();
+  const [nhanVien, setNhanVien] = useState({});
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios({
+      url: `https://apitraining.cybersoft.edu.vn/api/QuanLyNhanVienApi/ThemNhanVien
+      `,
+      method: "POST",
+      data: nhanVien,
+    })
+      .then((response) => {
+        alert("Thêm nhân viên thành công");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  const handleInput = () => {};
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setNhanVien({
+      ...nhanVien,
+      [name]: value,
+    });
+  };
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
         <div className="flex mt-4 w-[400px]  items-center mx-auto">
           <span>Mã nhân viên</span>
           <input
+            name="maNhanVien"
             className="text-center  p-4"
             type="text"
             placeholder="Mã nhân viên..."
             // value={nhanVien.maNhanVien}
             // disabled
+            onInput={handleInput}
           />
         </div>
         <div className="flex mt-4 w-[400px]  items-center mx-auto">
@@ -75,7 +100,7 @@ const ThemNhanVien = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-orange-500 text-white px-12 py-4 rounded hover:bg-orange-700 mt-10"
         >
           Submit
         </button>

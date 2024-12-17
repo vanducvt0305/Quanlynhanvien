@@ -39,6 +39,12 @@ const Home = () => {
   return (
     <div>
       <div className="text-center text-3xl  mb-10">Danh Sách Nhân Viên</div>
+      <div className="text-end text-3xl text-orange-700  mb-10 ">
+        <NavLink to="/themnhanvien">
+          Thêm nhân viên mới
+          <span className="">+</span>
+        </NavLink>
+      </div>
       <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
         <thead className="bg-gray-800 text-white">
           <tr>
