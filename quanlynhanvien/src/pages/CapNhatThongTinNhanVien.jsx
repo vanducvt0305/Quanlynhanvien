@@ -21,7 +21,6 @@ const CapNhatThongTinNhanVien = () => {
       method: "GET",
     })
       .then((response) => {
-        console.log(response.data);
         setNhanVien(response.data);
       })
       .catch((err) => {
