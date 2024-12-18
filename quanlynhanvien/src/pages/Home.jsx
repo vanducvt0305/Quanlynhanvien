@@ -30,9 +30,7 @@ const Home = () => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    handleDelete();
-  }, []);
+
   useEffect(() => {
     layDanhSachNhanVien();
   }, []);
